@@ -7,6 +7,7 @@ import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import android.widget.Toast
 
 class MainActivity : AppCompatActivity() {
 
@@ -42,10 +43,13 @@ class MainActivity : AppCompatActivity() {
             tv.text=number.toString()
         })
         btn4.setOnClickListener(View.OnClickListener {
-            var num1 = et1.text.toString().toInt()
-            var num2=et2.text.toString().toInt()
-            var number=num1/num2
-            tv.text=number.toString()
+            try { var num1 = et1.text.toString().toInt()
+                var num2=et2.text.toString().toInt()
+                var number=num1/num2
+                tv.text=number.toString()
+            }catch (e :Exception ){
+                Toast.makeText(applicationContext, "Hа ноль делить нельзя", Toast.LENGTH_SHORT) .show()
+            }
         })
     }
 }
